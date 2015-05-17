@@ -27,16 +27,16 @@ if (${MSVC})
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_SCL_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS /wd4819")
 endif (${MSVC})
 
-# numcpp library
-add_library(numcpp
-	numcpp.cpp
+# # numcpp library
+# add_library(numcpp
+# 	numcpp.cpp
 
-	numcpp/allocator.h
-	numcpp/base_array.h
-	numcpp/array.h
-	numcpp/array_functions.h
-	numcpp/gpu_array.h
-	numcpp/opencv.h)
+# 	numcpp/allocator.h
+# 	numcpp/base_array.h
+# 	numcpp/array.h
+# 	numcpp/array_functions.h
+# 	numcpp/gpu_array.h
+# 	numcpp/opencv.h)
 
 # External library: OpenCV
 if (USE_OPENCV)
@@ -44,14 +44,14 @@ if (USE_OPENCV)
 	set(OpenCV_STATIC OFF)
 
 	find_package(OpenCV REQUIRED)
-	target_link_libraries(numcpp ${OpenCV_LIBS})
+	# target_link_libraries(numcpp ${OpenCV_LIBS})
 endif (USE_OPENCV)
 
 # External library: NVIDIA CUDA
 if (USE_CUDA)
 	find_package(CUDA REQUIRED)
 	include_directories(${CUDA_INCLUDE_DIRS})
-	target_link_libraries(numcpp ${CUDA_LIBRARIES})
+	# target_link_libraries(numcpp ${CUDA_LIBRARIES})
 
 	if (${UNIX})
 		# Use C++03 compiler, not C++11
